@@ -1,14 +1,14 @@
 package org.careconnect.careconnectcommon.versoning;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.ToString;
 
 @Data
-@ToString
 @Embeddable
+@JsonIgnoreProperties
 public class Address {
 
     @NotNull(message = "Enter Street")

@@ -1,5 +1,6 @@
 package org.careconnect.careconnectcommon.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -9,6 +10,7 @@ import org.careconnect.careconnectcommon.versoning.Name;
 
 @Entity(name = "doctors")
 @Data
+@JsonIgnoreProperties
 public class DoctorEntity {
 
     @Id

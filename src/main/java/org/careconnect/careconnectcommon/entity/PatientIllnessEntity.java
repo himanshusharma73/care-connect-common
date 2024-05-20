@@ -1,6 +1,7 @@
 package org.careconnect.careconnectcommon.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -13,18 +14,15 @@ import java.util.List;
 
 @Entity(name = "patient_illness")
 @Data
-@ToString
+@JsonIgnoreProperties
 public class PatientIllnessEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long illnessId;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_Id")
-    @JsonIgnore
-    private  PatientEntity patient;
+    @Column(name="patientId")
+    private long patientId;
 
     @NotNull(message = "Illness list must not be null")
     @NotEmpty(message = "Illness list must not be empty")

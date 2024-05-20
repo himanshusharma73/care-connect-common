@@ -1,6 +1,7 @@
 package org.careconnect.careconnectcommon.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Data
 @Entity(name = "patient")
+@JsonIgnoreProperties
 public class PatientEntity {
     private LocalDate registrationDate=LocalDate.now();
 
@@ -79,10 +81,5 @@ public class PatientEntity {
 
     @NotNull(message = "Please indicate Medicaid eligibility")
     private Boolean isMedicaidEligible;
-
-
-    @OneToMany(mappedBy = "patient")
-    @JsonIgnore
-    private List<PatientIllnessEntity> illnesses;
 
 }

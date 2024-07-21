@@ -10,15 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionAdvice {
 
-    @ExceptionHandler(DoctorExitException.class)
-    public ResponseEntity<ApiResponse> exitException(DoctorExitException e){
-        BookingException bookingException =new BookingException("1000",e.getMessage(),
-                "These details are already taken");
-        ApiResponse apiResponse=new ApiResponse();
-        apiResponse.setError(bookingException);
-        return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
-    }
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiResponse> validationError(MethodArgumentNotValidException e){
         BookingException bookingException =new BookingException("1001",e.getFieldError().getDefaultMessage(),
@@ -45,10 +36,19 @@ public class ExceptionAdvice {
         return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(PatientExitException.class)
-    public ResponseEntity<ApiResponse> exitException(PatientExitException e){
+    @ExceptionHandler(ResourceAlreadyExitException.class)
+    public ResponseEntity<ApiResponse> exitException(ResourceAlreadyExitException e){
         CareConnectException careConnectException=new CareConnectException("1000",e.getMessage(),
                 "These details are already taken");
+        ApiResponse apiResponse=new ApiResponse();
+        apiResponse.setError(careConnectException);
+        return new ResponseEntity<>(apiResponse, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(DuplicateResourceException.class)
+    public ResponseEntity<ApiResponse> exitException(DuplicateResourceException e){
+        CareConnectException careConnectException=new CareConnectException("1000",e.getMessage(),
+                "You are entering duplicate details");
         ApiResponse apiResponse=new ApiResponse();
         apiResponse.setError(careConnectException);
         return new ResponseEntity<>(apiResponse, HttpStatus.NOT_ACCEPTABLE);

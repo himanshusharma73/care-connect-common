@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>org.careconnect</groupId>
 	<artifactId>care-connect-common</artifactId>
-	<version>1.0.0</version>
+	<version>2.0.0</version>
 	<name>care-connect-common</name>
 	<description>Hospital Management System</description>
 	<properties>

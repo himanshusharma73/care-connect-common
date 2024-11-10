@@ -1,7 +1,6 @@
-package org.careconnect.careconnectcommon.versoning;
+package org.careconnect.careconnectcommon.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -10,10 +9,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Embeddable
+@JsonIgnoreProperties
+@NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class Address {
 
     @NotNull(message = "Enter Street")
@@ -36,7 +35,3 @@ public class Address {
     @NotEmpty(message = "Enter Country")
     private String country;
 }
-
-
-
-

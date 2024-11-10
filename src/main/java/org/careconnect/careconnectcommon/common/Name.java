@@ -1,16 +1,17 @@
-package org.careconnect.careconnectcommon.versoning;
+package org.careconnect.careconnectcommon.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Embeddable
 @JsonIgnoreProperties
+@NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class Name {
 
     @Size(min = 3,message = "First name should have at least 3 character")
